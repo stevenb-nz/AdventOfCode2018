@@ -5,38 +5,34 @@ def day07(input)
   deps = Hash.new
   input.each do |line|
     if deps.has_key?(line[5]) then
-      deps[line[5]].push line[-12]
+      deps[line[5]][1].push line[-12]
     else
-      deps[line[5]] = [line[-12]]
+      deps[line[5]] = [[],[line[-12]]]
+    end
+    if deps.has_key?(line[-12]) then
+      deps[line[-12]][0].push line[5]
+    else
+      deps[line[-12]] = [[line[5]],[]]
     end
   end
-  peds = Hash.new
-  input.each do |line|
-    if peds.has_key?(line[-12]) then
-      peds[line[-12]].push line[5]
-    else
-      peds[line[-12]] = [line[5]]
-    end
-  end
+
   candidates = []
-  peds.each do |a|
-    a[1].each do |d|
-      if !peds.has_key?(d) then
-        candidates.append d
-      end
+  deps.each do |k,v|
+    if v[0].empty? then
+      candidates.append k
     end
   end
 
   result = ""
   nextletter = candidates.min
 
-  while deps.has_key?(nextletter)
+  while !deps[nextletter][1].empty?
     result = result + nextletter
     candidates.delete nextletter
-    peds.each_key do |newcandidate|
+    deps[nextletter][1].each do |newcandidate|
       if !result.include? newcandidate then
         check = true
-        peds[newcandidate].each do |p|
+        deps[newcandidate][0].each do |p|
           if !result.include? p then
             check = false
           end
