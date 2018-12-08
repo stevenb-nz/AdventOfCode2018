@@ -1,4 +1,4 @@
-def day07(input)
+def day07(input,s_offset,n_workers)
 
   input = input.split(/\n/)
 
@@ -51,4 +51,4 @@ def day07(input)
 end
 
 #input = File.read("day07_input.txt").chomp
-#puts day07(input)
+#puts day07(input,60,5)
