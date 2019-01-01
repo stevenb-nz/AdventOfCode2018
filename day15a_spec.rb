@@ -2,7 +2,7 @@ require "rspec"
 require_relative "day15a"
 
 describe "day15" do
-  it "returns 27730 for '#######\n#G..#E#\n#...EG#\n#.#.#G#\n#..G#E#\n#.....#\n#######'" do
+  it "returns 27730 for '#######\n#.G...#\n#...EG#\n#.#.#G#\n#..G#E#\n#.....#\n#######'" do
     expect(day15("#######\n#.G...#\n#...EG#\n#.#.#G#\n#..G#E#\n#.....#\n#######")).to eq 27730
   end
   it "returns 36334 for '#######\n#G..#E#\n#E#E.E#\n#G.##.#\n#...#E#\n#...E.#\n#######'" do
