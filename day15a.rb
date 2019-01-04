@@ -1,3 +1,5 @@
+require 'set'
+
 def day15(input)
   map = []
   input = input.split(/\n/)
@@ -14,6 +16,11 @@ def day15(input)
         units.push [x,y,square]
       end
     end
+  end
+  einrange = Set.new
+  ginrange = Set.new
+  units.each do |unit|
+
   end
 
   return 27730
